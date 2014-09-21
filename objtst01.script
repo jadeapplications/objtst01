@@ -1,0 +1,48 @@
+// Copyright (c) 2014 Mimetics Inc.
+// All Rights Reserved
+//
+// THIS SOFTWARE IS PROVIDED BY MIMETICS "AS IS" WITHOUT ANY EXPRESSED OR 
+// IMPLIED WARRANTIES.  IN NO CASE SHALL MIMETICS OR ANY CONTRIBUTORS BE
+// LIABLE IN ANY DAMAGES CAUSED BY THE USE OF THIS SOFTWARE.  
+//
+// FileName: objtst01.script
+// Version : 01.0
+//
+// Author  : myke predko
+//
+// Description: Display the object sensor values on Sliders
+//
+// Release History:
+//  objtst01 - Copied from "objAv06" (and it's project).  
+//           - No Motor Movement
+meta("icon",                "objtst01.b");
+meta("description",         "Object Test:Simple Programming Example");
+int                         leftFront;
+int                         rightFront;
+int                         leftSide;
+int                         rightSide;
+int                         rearMiddle;
+str                         outString;
+
+
+    syscall(motorleftset, "0");  syscall(motorrightset, "0");
+
+    syscall(loadpanelfile, "_exec2.p");
+    syscall(setpanelicon, "tools:objtst01.b");
+    syscall(loadsubpanelfile, "objtst01.p");
+    syscall(setpaneltext, "pgmname:Object Test");
+    syscall(runpanelfile, "");
+
+//    syscall(cleardisplay, "");
+    for (; "RUN:" == syscall(tostring, "4:" + syscall(getactivepanelstatus, ""));) {
+        leftFront = stoi(syscall(irleftfront, ""));
+        syscall(setpanelvalue, "leftFront:" + itos(leftFront));
+        rightFront = stoi(syscall(irrightfront, ""));
+        syscall(setpanelvalue, "rightFront:" + itos(rightFront));
+        leftSide = stoi(syscall(irleftside, ""));
+        syscall(setpanelvalue, "leftSide:" + itos(leftSide));
+        rightSide = stoi(syscall(irrightside, ""));
+        syscall(setpanelvalue, "rightSide:" + itos(rightSide));
+        rearMiddle = stoi(syscall(ircenterrear, ""));
+        syscall(setpanelvalue, "rearMiddle:" + itos(rearMiddle));
+    }
