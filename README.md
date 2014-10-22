@@ -8,7 +8,7 @@ Display the object sensor values on Sliders.
 Type              : C
 Version           : 01.0
 Author            : myke predko
-Firmware          : 40
+Firmware          : 42
 ```
 
 
